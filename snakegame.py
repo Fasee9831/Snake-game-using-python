@@ -2,7 +2,6 @@ import pygame
 import random
 import sys
 
-# Initialize pygame
 pygame.init()
 
 # Screen setup
@@ -10,8 +9,6 @@ WIDTH, HEIGHT = 800, 600
 CELL_SIZE = 20
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Neon Snake :)")
-
-# Clock
 clock = pygame.time.Clock()
 snake_speed = 12
 
@@ -27,7 +24,6 @@ snake = []
 snake_direction = (CELL_SIZE, 0)
 food = (0, 0)
 
-# ---------------- Utility Functions ----------------
 def draw_gradient():
     """Cyberpunk gradient background"""
     for y in range(HEIGHT):
@@ -77,7 +73,6 @@ def button(text, x, y, w, h, color, hover_color, action=None):
     screen.blit(text_surf, (x + (w - text_surf.get_width()) // 2,
                             y + (h - text_surf.get_height()) // 2))
 
-# ---------------- Game Logic ----------------
 def reset_game():
     global snake, snake_direction, food, score
     snake = [(100, 100)]
@@ -106,11 +101,10 @@ def game_loop():
                 elif event.key == pygame.K_RIGHT and snake_direction != (-CELL_SIZE, 0):
                     snake_direction = (CELL_SIZE, 0)
 
-        # Move snake
+        
         head = (snake[0][0] + snake_direction[0], snake[0][1] + snake_direction[1])
         snake.insert(0, head)
 
-        # Eat food
         if head == food:
             score += 1
             food = (random.randrange(0, WIDTH, CELL_SIZE),
@@ -131,8 +125,6 @@ def game_loop():
         show_score()
         pygame.display.flip()
         clock.tick(snake_speed)
-
-# ---------------- Screens ----------------
 def home_screen():
     while True:
         for event in pygame.event.get():
@@ -171,7 +163,7 @@ def game_over_screen():
         pygame.display.flip()
         clock.tick(15)
 
-# ---------------- Run Game ----------------
 home_screen()
+
 
 
