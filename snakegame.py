@@ -4,7 +4,6 @@ import sys
 
 pygame.init()
 
-# Screen setup
 WIDTH, HEIGHT = 800, 600
 CELL_SIZE = 20
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -12,13 +11,11 @@ pygame.display.set_caption("Neon Snake :)")
 clock = pygame.time.Clock()
 snake_speed = 12
 
-# Colors (Neon Palette)
 NEON_GREEN = (0, 255, 128)
 NEON_RED = (255, 51, 102)
 NEON_BLUE = (0, 255, 255)
 BLACK = (10, 10, 10)
 
-# Global variables
 score = 0
 snake = []
 snake_direction = (CELL_SIZE, 0)
@@ -164,6 +161,7 @@ def game_over_screen():
         clock.tick(15)
 
 home_screen()
+
 
 
 
